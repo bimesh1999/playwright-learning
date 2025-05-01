@@ -23,19 +23,21 @@ const {expect} = require('@playwright/test');
 test.only('chatapp login', async ({page})=>{
     const userName = page.locator('#username');
     const signIn = page.locator('#signInBtn');
+    const getList = page.locator(".card-body a");
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
-    await userName.fill("rahalshettyacademy");
+    await userName.fill("rahulshettyacademy");
     await page.locator('[type="password"]').fill("learning");
     await signIn.click();
-    console.log(await page.locator("[style*='block']").textContent());
-    await expect(page.locator("[style*='block']")).toContainText("Incorrect username/password");
+    // console.log(await page.locator("[style*='block']").textContent());
+    // await expect(await page.locator("[style*='block']")).toContainText("Incorrect username/password");
     //file
     await userName.fill("");
-    await userName.fill("rahalshettyacademy");
+    await userName.fill("rahulshettyacademy");
     await signIn.click();
-    
-
-
+    console.log(await getList.nth(1).textContent());
+    console.log(await getList.first().textContent());
+    const allList =await getList.allTextContents();
+    console.log(allList);
 })
 
 
