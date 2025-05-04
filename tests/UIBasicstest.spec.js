@@ -49,6 +49,9 @@ test.only("UI controls", async({page})=>{
     await dropdown.selectOption("consult");
     await page.locator(".customradio").last().click();
     await page.locator("#okayBtn").click();
+    console.log(await page.locator(".customradio").last().isChecked());
+    expect(await page.locator(".customradio").last().isChecked()).toBe(true);
+    await page.locator("#terms").check(); //uncheck can be used to uncheck the checkbox
     await page.pause();
 })
 
