@@ -41,7 +41,7 @@ test('chatapp login', async ({page})=>{
 })
 
 
-test.only("UI controls", async({page})=>{
+test("UI controls", async({page})=>{
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     const userName = page.locator('#username');
     const signIn = page.locator('#signInBtn');
@@ -58,3 +58,16 @@ test.only("UI controls", async({page})=>{
 })
 
 
+
+ test.only("child tab", async ({browser}){
+    const context = await browser.newContext();
+    const page = await browser.newPage();
+    await page.goto(" https://rahulshettyacademy.com/loginpagePractise/");
+    const documentLink = page.locator("[href*= 'documents']");
+const newPage = await Promise.all([
+    documentLink.click(),
+    context.waitForEvent('page'),
+]);
+  await text = newPage[1].locator(".red").textContent();
+    console.log(text);
+})
