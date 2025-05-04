@@ -45,14 +45,16 @@ test.only("UI controls", async({page})=>{
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     const userName = page.locator('#username');
     const signIn = page.locator('#signInBtn');
+    const documentLink = page.locator("[href*= 'documents']");
     const dropdown = page.locator("select.form-control");
     await dropdown.selectOption("consult");
     await page.locator(".customradio").last().click();
     await page.locator("#okayBtn").click();
     console.log(await page.locator(".customradio").last().isChecked());
-    expect(await page.locator(".customradio").last().isChecked()).toBe(true);
+    expect(await page.locator(".customradio").last().isChecked()).toBe(true); //toBEFalsy() can also be used
     await page.locator("#terms").check(); //uncheck can be used to uncheck the checkbox
-    await page.pause();
+    await expect(documentLink).toHaveAttribute("class", "blinkingsText");
+    // await page.pause();
 })
 
 
