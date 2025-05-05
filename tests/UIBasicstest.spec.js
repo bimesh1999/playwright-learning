@@ -59,15 +59,25 @@ test("UI controls", async({page})=>{
 
 
 
- test.only("child tab", async ({browser}){
+ test.only("child tab", async ({browser}) => {
     const context = await browser.newContext();
-    const page = await browser.newPage();
+    const page = await context.newPage();
     await page.goto(" https://rahulshettyacademy.com/loginpagePractise/");
     const documentLink = page.locator("[href*= 'documents']");
-const newPage = await Promise.all([
-    documentLink.click(),
-    context.waitForEvent('page'),
+const [newPage] = await Promise.all([     //page can return multiple window
+    context.waitForEvent('page'),  //listen for new page
+    documentLink.click(),    
+    
 ]);
-  await text = newPage[1].locator(".red").textContent();
+   const text = await newPage.locator(".red").textContent();
+   const arrayText = text.split("@");
+   const mid = arrayText[1].split(" ")[0];
+   const domain = mid.split(".com")[0];
+   
+
+   console.log(domain);
+
     console.log(text);
+    await page.locator("#username").fill(domain);
+    await page.pause();
 })
