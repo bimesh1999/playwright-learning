@@ -73,11 +73,11 @@ const [newPage] = await Promise.all([     //page can return multiple window
    const arrayText = text.split("@");
    const mid = arrayText[1].split(" ")[0];
    const domain = mid.split(".com")[0];
-   
+
 
    console.log(domain);
 
     console.log(text);
     await page.locator("#username").fill(domain);
-    await page.pause();
+    await page.pause()
 })
