@@ -20,7 +20,6 @@ const {expect} = require('@playwright/test');
 
 //     })
 
-<<<<<<< HEAD
 test('chatapp login', async ({page})=>{
     const userName = page.locator('#username');
     const signIn = page.locator('#signInBtn');
@@ -56,23 +55,11 @@ test("UI controls", async({page})=>{
     await page.locator("#terms").check(); //uncheck can be used to uncheck the checkbox
     await expect(documentLink).toHaveAttribute("class", "blinkingsText");
     // await page.pause();
-=======
-test.only('chatapp login', async ({page})=>{
-    await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
-    await page.locator('#username').fill("rahalshettyacademy");
-    await page.locator('[type="password"]').fill("PAssword@123");
-    await page.locator('#signInBtn').click();
-    console.log(await page.locator("[style*='block']").textContent());
-    await expect(page.locator("[style*='block']")).toContainText("Incorrect username/passwords");
-
-
->>>>>>> cc2355cf491c0ef7979e77beeb5ea569e076b6a8
 })
 
 
 
-<<<<<<< HEAD
- test.only("child tab", async ({browser}) => {
+ test("child tab", async ({browser}) => {
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto(" https://rahulshettyacademy.com/loginpagePractise/");
@@ -88,11 +75,9 @@ const [newPage] = await Promise.all([     //page can return multiple window
    const domain = mid.split(".com")[0];
 
 
-   console.log(domain);
+    console.log(domain);
 
     console.log(text);
     await page.locator("#username").fill(domain);
     await page.pause()
 })
-=======
->>>>>>> cc2355cf491c0ef7979e77beeb5ea569e076b6a8
